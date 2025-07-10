@@ -3,12 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LeetCode Tracker</title>
+  <title>DSA Tracker</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+    <div class="theme-toggle" style="margin-left: auto; display: flex; align-items: center; gap: 0.5rem;">
+    <span>☀️</span>
+    <label class="switch">
+      <input type="checkbox" id="dark-toggle">
+      <span class="slider"></span>
+    </label>
+    <span>🌙</span>
+  </div>
   <div class="container">
-    <h1>📊 LeetCode Tracker</h1>
+    <h1>📚 DSA Tracker</h1>
+
+    <!-- Add Question Form -->
     <form id="tracker-form">
       <input type="text" id="question" placeholder="Enter question title" required />
       <select id="topic">
@@ -18,41 +28,47 @@
         <option value="Binary Search">Binary Search</option>
         <option value="DP">DP</option>
         <option value="Linked List">Linked List</option>
+        <option value="Tree">Tree</option>
       </select>
       <button type="submit">Add</button>
     </form>
 
-    <div id="progress"></div>
-    <div class="filters">
-    <label>
-        Filter:
-        <select id="filter-status" onchange="render()">
+    <!-- Progress Bar -->
+    <div id="progress">
+      <div class="bar"><div></div></div>
+      <p>Progress: 0/0 solved (0%)</p>
+    <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid #ccc;" />
+
+    <div class="top-bar">
+  <div class="filters">
+    <label>Status:
+      <select id="filter-status" onchange="render()">
         <option value="all">All</option>
         <option value="solved">Solved</option>
         <option value="unsolved">Unsolved</option>
-        </select>
+      </select>
     </label>
-
-    <label>
-        Sort by Topic:
-        <select id="sort-topic" onchange="render()">
+    <label>Sort Topic:
+      <select id="sort-topic" onchange="render()">
         <option value="none">None</option>
         <option value="asc">A → Z</option>
         <option value="desc">Z → A</option>
-        </select>
+      </select>
     </label>
-    </div>
+  </div>
+</div>
 
+    <!-- Question List -->
     <ul id="question-list"></ul>
   </div>
 
   <!-- Notes Modal -->
-  <div id="notes-modal" class="modal hidden">
+  <div class="modal" id="notes-modal">
     <div class="modal-content">
       <textarea id="note-text" placeholder="Write your notes here..."></textarea>
       <div class="modal-actions">
-        <button onclick="closeModal()">Cancel</button>
-        <button onclick="saveNote()">Save</button>
+        <button class="cancel" onclick="closeModal()">Cancel</button>
+        <button class="save" onclick="saveNote()">Save</button>
       </div>
     </div>
   </div>
