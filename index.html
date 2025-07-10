@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LeetCode Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>📊 LeetCode Tracker</h1>
+    <form id="tracker-form">
+      <input type="text" id="question" placeholder="Enter question title" required />
+      <select id="topic">
+        <option value="Array">Array</option>
+        <option value="String">String</option>
+        <option value="Hashing">Hashing</option>
+        <option value="Binary Search">Binary Search</option>
+        <option value="DP">DP</option>
+        <option value="Linked List">Linked List</option>
+      </select>
+      <button type="submit">Add</button>
+    </form>
+
+    <div id="progress"></div>
+    <div class="filters">
+    <label>
+        Filter:
+        <select id="filter-status" onchange="render()">
+        <option value="all">All</option>
+        <option value="solved">Solved</option>
+        <option value="unsolved">Unsolved</option>
+        </select>
+    </label>
+
+    <label>
+        Sort by Topic:
+        <select id="sort-topic" onchange="render()">
+        <option value="none">None</option>
+        <option value="asc">A → Z</option>
+        <option value="desc">Z → A</option>
+        </select>
+    </label>
+    </div>
+
+    <ul id="question-list"></ul>
+  </div>
+
+  <!-- Notes Modal -->
+  <div id="notes-modal" class="modal hidden">
+    <div class="modal-content">
+      <textarea id="note-text" placeholder="Write your notes here..."></textarea>
+      <div class="modal-actions">
+        <button onclick="closeModal()">Cancel</button>
+        <button onclick="saveNote()">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
